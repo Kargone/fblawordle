@@ -1,3 +1,9 @@
+/* 
+*you can also change button to #start for just the start button
+*the button just applies to all buttons
+*but if you do a #then the id name it will apply to that element only
+*while you can do styling in html, make sure to do it all here 
+*/
 button {
     position: fixed;
     color: black;
