@@ -4,7 +4,7 @@
 *but if you do a #then the id name it will apply to that element only
 *while you can do styling in html, make sure to do it all here 
 */
-body{
+body {
     background-color: black;
 }
 
@@ -44,9 +44,11 @@ button {
 #normal{
     visibility: hidden;
 }
+
 #infinite{
     visibility: hidden;
 }
+
 p {
     color: white;
     font-size: 50Px;
@@ -77,6 +79,7 @@ table{
     margin-right: auto;
 }
 
+/* this is a class declaration */
 .normal_button {
     font-family: sans-serif;
     height: 58px;
