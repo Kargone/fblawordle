@@ -4,12 +4,92 @@
 *but if you do a #then the id name it will apply to that element only
 *while you can do styling in html, make sure to do it all here 
 */
+body{
+    background-color: black;
+}
+
+button {
+    position: absolute;
+    appearance: auto;
+    writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    box-sizing: border-box;
+
+}
+
 button {
     position: fixed;
-    color: black;
-    background-color: antiquewhite;
+    color: white;
+    background-color: black;
+    border-color: white;
+    border-radius: 20px;
     width: 300px;
     height: 50px;
     font-size: 25px;
     text-align: center;
+}
+
+#start{
+    visibility: visible;
+}
+
+#normal{
+    visibility: hidden;
+}
+#infinite{
+    visibility: hidden;
+}
+p {
+    color: white;
+    font-size: 50Px;
+    font-family: Cambria;
+    left: auto;
+    position: static;
+}
+
+td {
+    border: 2px;
+    border-style: solid;
+    border-color: rgb(45, 45, 47);
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    margin: 10px;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-size: 30px;
+    font-family: sans-serif;
+    background-color: rgb(18, 18, 19);;
+}
+
+table{
+    border-spacing: 10px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.normal_button {
+    font-family: sans-serif;
+    height: 58px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: #828385;
+    border: hidden;
+    margin: 2px;
+    font-size: 16px;
+    font-weight: 700;
+    width: 40px;
+    touch-action: manipulation;
+    padding: 0 0;
 }
