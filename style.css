@@ -9,29 +9,12 @@ body {
 }
 
 button {
-    position: absolute;
-    appearance: auto;
-    writing-mode: horizontal-tb !important;
-    text-rendering: auto;
-    letter-spacing: normal;
-    word-spacing: normal;
-    line-height: normal;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: center;
-    align-items: flex-start;
-    box-sizing: border-box;
-
-}
-
-button {
     position: fixed;
     color: white;
     background-color: black;
     border-color: white;
     border-radius: 20px;
-    width: 300px;
+    width: 312px;
     height: 50px;
     font-size: 25px;
     text-align: center;
@@ -46,6 +29,10 @@ button {
 }
 
 #infinite{
+    visibility: hidden;
+}
+
+#table{
     visibility: hidden;
 }
 
@@ -77,22 +64,4 @@ table{
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-}
-
-/* this is a class declaration */
-.normal_button {
-    font-family: sans-serif;
-    height: 58px;
-    border-radius: 4px;
-    cursor: pointer;
-    text-transform: uppercase;
-    color: #ffffff;
-    background: #828385;
-    border: hidden;
-    margin: 2px;
-    font-size: 16px;
-    font-weight: 700;
-    width: 40px;
-    touch-action: manipulation;
-    padding: 0 0;
 }

@@ -18,77 +18,109 @@ const listOfAnswers = ['abacus', 'abased', 'abated', 'abates', 'abayas', 'abbess
     'avenge', 'avenue', 'averse', 'averts', 'avians', 'aviary', 'avidly', 'avoids',  'avowed', 'awaits', 'awaked', 'awaken', 'awakes', 'awards', 'awhile', 'awning', 'awoken', 'axeman', 'axilla', 'axioms', 'axions', 'axonal', 
     'azalea', 'babble', 'babied', 'babies', 'baboon', 'backed', 'backer'];
 
+const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
 //the left right position of the person's next letter
 let col = 1;
-//either the most down row number or the top row number, helps determine when to start looking at the word list
-//ex if the bottom row is 1 that means for infi mode i look at the second word in the words list and keep going down the list from there to display the rest of the words in the output
-let bottomRow = 0;
+// what row the is being typed on
+let row = 0;
 //what the current up down position of the person's next letter is
 let typingRow = 1;
-//the seed is the number from the list of answers that is randomly generted for a random word
-//you will also need to copy the get random int func from my code
-let seed = getRandomInt(listOfAnswers.length);
 //this what the current row of letters loook like, will be all letter and not empty string when the user is done typing
-let guess = [" "," "," "," "," "," "];
+let guess = [];
+// same thing as guess just not the list
+let sGuess = ''
 //the list of words to be displayed or the words that aren't displayed for infi mode are also included
 let words = [[" "," "," "," "," "," "],[" "," "," "," "," "," "],[" "," "," "," "," "," "],[" "," "," "," "," "," "],[" "," "," "," "," "," "],[" "," "," "," "," "," "],[" "," "," "," "," "," "]];
+// sets what row for the typed letters to be put into
+let rCol = 7
 //this should be the longest part of the docu, maybe even a thousand lines long
 document.getElementById("start").addEventListener('click', function () {
     document.getElementById("start").style.visibility = 'hidden';
     document.getElementById("normal").style.visibility = 'visible';
     document.getElementById("infinite").style.visibility = 'visible';
+    reset()
 });
 
 document.getElementById("gamemode").addEventListener('click', function (){
     document.getElementById("normal").style.visibility = 'visible';
     document.getElementById("infinite").style.visibility = 'visible';
+    document.getElementById("table").style.visibility = 'hidden';
+    reset()
 });
 
 document.getElementById("normal").addEventListener('click', function (){
     document.getElementById("normal").style.visibility = 'hidden';
     document.getElementById("infinite").style.visibility = 'hidden';
-    mode = 'normal'
+    document.getElementById("table").style.visibility = 'visible';
+    reset()
 });
 
 document.getElementById("infinite").addEventListener('click', function (){
     document.getElementById("normal").style.visibility = 'hidden';
     document.getElementById("infinite").style.visibility = 'hidden';
-    mode - 'InfiniMode'
+    document.getElementById("table").style.visibility = 'visible';
+    reset()
 });
 
-function game () {
-    document.addEventListener("keydown", (e) => {
-        let pressedKey = String(e.key);
-        //letters need to be define with all of the different letters
-        if (letters.includes(pressedKey)) {
-          letterPress(pressedKey, pressedKey);
-        } else if (pressedKey === "Backspace") {
-          backspace();
-        } else if (pressedKey === "Enter") {
-          enter();
+document.addEventListener("keydown", function(e) {
+    console.log(e);
+    game(e.key)
+});
+
+function game(letter) { 
+    let pressedKey = String(letter);
+    if(pressedKey == 'Enter' && rCol < 43){
+        var testAnswer = listOfAnswers.includes(sGuess);
+        if(testAnswer == true){
+            if(col == rCol){
+                rCol += 6;
+                words[row] = guess;
+                guess = [];
+                sGuess = "";
+            }
         }
-    });
+    
+    }else{
+        if(pressedKey == 'Backspace' && col > 1){
+            col--;
+            document.getElementById(col).textContent = " ";
+            if(col < 7){
+                sGuess = sGuess.slice(0, (col%6)-1);
+                console.log(sGuess);
+            }else{
+                sGuess = sGuess.slice(0, (col%6)-1);
+                console.log(sGuess);
+            }
+        }
+    }
+
+    if(col < rCol && alphabet.includes(pressedKey) == true){
+        document.getElementById(String(col)).textContent = pressedKey;
+        col++;
+        guess[col-(2+(row*6))] = pressedKey;
+        sGuess += pressedKey;
+        console.log(guess)
+        console.log(sGuess)
+    }
 }
+
+
+function reset() {
+    for(var i  = 1; i < 43; i++){
+        document.getElementById(i+"").style.backgroundColor = "#121213";
+        document.getElementById(i+"").style.borderColor = "#2d2d2f";
+        document.getElementById(i+"").textContent = " ";
+    }
+    document
+    col = 1;
+    guess = [];
+    sGuess = "";
+}
+
+
 
 //alright this is where it goes off the deepend, i suggest just trying to start from fresh with your own demos instead of using my code
 //only use my code when you know what it does, use stack overflow for any help you need
-function letterPress(letter) {
-    if ((col > 42) && (col <= typingRow*6) && (roundWon === false) && (roundLost === false) && (keyboardStart)){
-      while (col > 42) {
-          bottomRow++;
-          typingRow--;
-          col = col - 5;
-          updateBoard();
-      }
-    }
-    if ((col <= typingRow*6) && (roundWon === false) && (roundLost === false) && (keyboardStart)) {
-      cl("letterPressed: " + letter);
-      var id = col + "";
-      document.getElementById(id).textContent = letter;
-      document.getElementById(id).style.borderColor = '#404142';
-      guess[col-1-((typingRow-1)*6)] = letter;
-      col++;
-    }
-  }
 
 //tbh connor this project isn't doable, it took me months to accomplish mordle and 70+ hours, idk if you can do it here
