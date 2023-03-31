@@ -6,6 +6,8 @@
 */
 body {
     background-color: black;
+    margin: 0px;
+    padding: 0px;
 }
 
 button {
@@ -22,26 +24,44 @@ button {
 
 #start{
     visibility: visible;
+    position: absolute;
+    left: calc(50% - 130px);
+    top: 46%;
 }
 
 #normal{
     visibility: hidden;
+    position: absolute;
+    top: calc(46% - 60px); 
+    left: calc(50% - 130px);
 }
 
 #infinite{
     visibility: hidden;
+    position: absolute;
+    top:46%; 
+    left: calc(50% - 130px);
 }
 
 #table{
     visibility: hidden;
 }
 
+#wordleTitle {
+    text-align: center;
+}
+
+#gamemode {
+    top: calc(100% - 60px);
+    left: calc(100% - 314px);
+    position: absolute;
+}
+
 p {
     color: white;
-    font-size: 50Px;
+    font-size: 50px;
     font-family: Cambria;
-    left: auto;
-    position: static;
+    position: relative;
 }
 
 td {
