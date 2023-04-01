@@ -67,7 +67,7 @@ p {
 td {
     border: 2px;
     border-style: solid;
-    border-color: rgb(45, 45, 47);
+    border-color: rgb(155, 155, 155);
     width: 60px;
     height: 60px;
     text-align: center;
@@ -76,7 +76,7 @@ td {
     color: #ffffff;
     font-size: 30px;
     font-family: sans-serif;
-    background-color: rgb(18, 18, 19);;
+    background-color: black;
 }
 
 table{

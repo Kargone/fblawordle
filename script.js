@@ -11,7 +11,7 @@ const listOfAnswers = ['abacus', 'abased', 'abated', 'abates', 'abayas', 'abbess
     'angsty', 'animal', 'animus', 'anions', 'ankles', 'anklet', 'annals', 'annoys', 'annual', 'annuls', 'anodes', 'anodic', 'anoint', 'anoles', 'anomie', 'anorak', 'anoxia', 'anoxic', 'answer', 'anthem', 'anther', 'antics', 
     'antler', 'antral', 'antrum', 'anuses', 'anvils', 'anyhow', 'anyone', 'anyway', 'aorist', 'aortic', 'apache', 'apathy', 'apexes', 'aphids', 'apiary', 'apical', 'apices', 'apiece', 'aplomb', 'apneas', 'apneic', 'apnoea', 
     'apogee', 'appall', 'appeal', 'appear', 'append', 'apples', 'applet', 'aprons', 'arabic', 'arable', 'arbors', 'arcade', 'arcana', 'arcane', 'arched', 'archer', 'arches', 'archly', 'arctic', 'ardent',  'areola', 'argent', 
-    'argued', 'arguer', 'argues', 'argyle', 'aright', 'arisen', 'arises', 'armada', 'armful', 'armies', 'arming', 'armlet', 'armory', 'armpit', 'arnica', 'aromas', 'around', 'arouse', 'arrant',  'arrear', 'arrest', 'arrive', 
+    'argued', 'arguer', 'argues', 'argyle', 'aright', 'arisen', 'arises', 'armada', 'armful', 'armies', 'arming', 'armlet', 'armory', 'armpit', 'arnica', 'acurromas', 'around', 'arouse', 'arrant',  'arrear', 'arrest', 'arrive', 
     'arrows', 'arroyo', 'arsons', 'artery', 'artful', 'artist', 'ascend', 'ascent', 'ashore', 'ashram', 'asides', 'asking', 'asleep', 'aspect', 'aspens', 'aspire', 'assail', 'assays', 'assent', 'assert', 'assess', 'assets', 
     'assign', 'assist', 'assize', 'assume', 'assure', 'astern', 'asters', 'asthma', 'astral', 'astray', 'astute', 'asylum', 'ataxia', 'atlatl', 'atolls', 'atomic', 'atonal', 'atopic', 'atrial', 'atrium', 'attach', 'attack', 
     'attain', 'attend', 'attest', 'attics', 'attire', 'attune', 'auburn', 'audios', 'audits', 'augers', 'augurs',  'august', 'auntie', 'aureus', 'aurora', 'auteur', 'author', 'autism', 'autumn', 'auxins', 'avails', 'avatar', 
@@ -19,108 +19,111 @@ const listOfAnswers = ['abacus', 'abased', 'abated', 'abates', 'abayas', 'abbess
     'azalea', 'babble', 'babied', 'babies', 'baboon', 'backed', 'backer'];
 
 const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-
-//the left right position of the person's next letter
-let col = 1;
-// what row the is being typed on
-let row = 0;
-//what the current up down position of the person's next letter is
-let typingRow = 1;
-//this what the current row of letters loook like, will be all letter and not empty string when the user is done typing
-let guess = [];
-// same thing as guess just not the list
-let sGuess = ''
-//the list of words to be displayed or the words that aren't displayed for infi mode are also included
-let words = [[" "," "," "," "," "," "],[" "," "," "," "," "," "],[" "," "," "," "," "," "],[" "," "," "," "," "," "],[" "," "," "," "," "," "],[" "," "," "," "," "," "],[" "," "," "," "," "," "]];
-// sets what row for the typed letters to be put into
-let rCol = 7
-//this should be the longest part of the docu, maybe even a thousand lines long
+let currentRowGuess = ['', '', '', '', '', ''];
+let gameBoardGuesses = [currentRowGuess];
+let answer = listOfAnswers[0];
 document.getElementById("start").addEventListener('click', function () {
     document.getElementById("start").style.visibility = 'hidden';
     document.getElementById("normal").style.visibility = 'visible';
     document.getElementById("infinite").style.visibility = 'visible';
-    reset()
-});
-
-document.getElementById("gamemode").addEventListener('click', function (){
-    document.getElementById("normal").style.visibility = 'visible';
-    document.getElementById("infinite").style.visibility = 'visible';
-    document.getElementById("table").style.visibility = 'hidden';
-    reset()
 });
 
 document.getElementById("normal").addEventListener('click', function (){
     document.getElementById("normal").style.visibility = 'hidden';
     document.getElementById("infinite").style.visibility = 'hidden';
     document.getElementById("table").style.visibility = 'visible';
-    reset()
 });
 
 document.getElementById("infinite").addEventListener('click', function (){
     document.getElementById("normal").style.visibility = 'hidden';
     document.getElementById("infinite").style.visibility = 'hidden';
     document.getElementById("table").style.visibility = 'visible';
-    reset()
 });
 
 document.addEventListener("keydown", function(e) {
-    console.log(e);
-    game(e.key)
+    let pressedKey = String(e.key);
+    console.log(pressedKey)
+    if (pressedKey === 'Enter'){
+        enterKey();
+    } else if (pressedKey === 'Backspace') {
+        
+    } else if (alphabet.includes(pressedKey)) {
+        let cursorColumn = currentRowGuess.indexOf('');
+        if (cursorColumn === -1) return;
+        currentRowGuess[cursorColumn] = pressedKey;
+        updateGameBoard();
+    }
 });
 
-function game(letter) { 
-    let pressedKey = String(letter);
-    if(pressedKey == 'Enter' && rCol < 43){
-        var testAnswer = listOfAnswers.includes(sGuess);
-        if(testAnswer == true){
-            if(col == rCol){
-                rCol += 6;
-                words[row] = guess;
-                guess = [];
-                sGuess = "";
-            }
-        }
-    
-    }else{
-        if(pressedKey == 'Backspace' && col > 1){
-            col--;
-            document.getElementById(col).textContent = " ";
-            if(col < 7){
-                sGuess = sGuess.slice(0, (col%6)-1);
-                console.log(sGuess);
-            }else{
-                sGuess = sGuess.slice(0, (col%6)-1);
-                console.log(sGuess);
-            }
-        }
+function enterKey() {
+    if (currentRowGuess.indexOf('') != -1) {
+        return 'Failed Guess, not completly done';
     }
+    let guess = currentRowGuess.join('');
+    if (listOfAnswers.indexOf(guess) != -1) {
+        return 'Failed Guess, not a valid one';
+    }
+    //up the row number by one
+    gameBoardGuesses[gameBoardGuesses.length - 1] = copy(currentRowGuess);
+    currentRowGuess = ['', '', '', '', '', ''];
+    gameBoardGuesses.push(currentRowGuess);
+}
 
-    if(col < rCol && alphabet.includes(pressedKey) == true){
-        document.getElementById(String(col)).textContent = pressedKey;
-        col++;
-        guess[col-(2+(row*6))] = pressedKey;
-        sGuess += pressedKey;
-        console.log(guess)
-        console.log(sGuess)
+function updateGameBoard() {
+    resetGameBoard();
+    let rowNumber = 0;
+    for (let row of gameBoardGuesses) {
+        rowNumber++;
+        console.log(rowNumber)
+        updateRow(row, rowNumber);
     }
 }
 
-
-function reset() {
-    for(var i  = 1; i < 43; i++){
-        document.getElementById(i+"").style.backgroundColor = "#121213";
-        document.getElementById(i+"").style.borderColor = "#2d2d2f";
-        document.getElementById(i+"").textContent = " ";
+function updateRow(row, rowNumber) {
+    let columnNumber = 0;
+    if (row.indexOf('') != -1 || rowNumber === gameBoardGuesses.length - 1) {
+        //do not color the row
+        for (let letter of row) {
+            columnNumber++;
+            if (letter === '') break;
+            document.getElementById(`${rowNumber}_${columnNumber}`).innerHTML = letter;
+            document.getElementById(`${rowNumber}_${columnNumber}`).style.backgroundColor = '#070707';
+        }
+    } else {
+        //color the row
+        let compareAnswer = copy(answer);
+        let fillColors = {'gray': '#121212', 'green': '#00ff00', 'yellow': 'yellow'}
+        for (let letter of row) {
+            columnNumber++;
+            document.getElementById(`${rowNumber}_${columnNumber}`).innerHTML = letter;
+            if (compareAnswer[columnNumber - 1] === letter) {
+                //green
+                compareAnswer[columnNumber - 1] = '';
+                document.getElementById(`${rowNumber}_${columnNumber}`).style.backgroundColor = fillColors.green;
+            } else if (compareAnswer.indexOf(letter) != -1) {
+                //yellow
+                compareAnswer[compareAnswer.indexOf(letter)] = '';
+                document.getElementById(`${rowNumber}_${columnNumber}`).style.backgroundColor = fillColors.yellow;
+            } else {
+                //gray
+                document.getElementById(`${rowNumber}_${columnNumber}`).style.backgroundColor = fillColors.gray;
+            }
+        }
     }
-    document
-    col = 1;
-    guess = [];
-    sGuess = "";
 }
 
+function resetGameBoard() {
+    for (let rowNumber = 1; rowNumber < 8; rowNumber++) {
+        for (let columnNumber = 1; columnNumber < 7; columnNumber++) {
+            document.getElementById(`${rowNumber}_${columnNumber}`).innerHTML = ' ';
+            document.getElementById(`${rowNumber}_${columnNumber}`).style.backgroundColor = 'black';
+        }   
+    }   
+}
 
+function copy(object) {
+    return JSON.parse(JSON.stringify(object));
+}
 
 //alright this is where it goes off the deepend, i suggest just trying to start from fresh with your own demos instead of using my code
 //only use my code when you know what it does, use stack overflow for any help you need
-
-//tbh connor this project isn't doable, it took me months to accomplish mordle and 70+ hours, idk if you can do it here
