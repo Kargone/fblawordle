@@ -24,11 +24,18 @@ button {
 }
 
 
-#start{
+#start {
     visibility: visible;
     position: absolute;
     left: calc(50% - 130px);
     top: 46%;
+}
+
+#leaderboard {
+    text-align: left;
+    top: 10%;
+    font-size: 10px;
+    font-family: Cambria;
 }
 
 
@@ -51,6 +58,7 @@ button {
 
 #continue {
     visibility: hidden;
+    position: absolute;
     left: calc(49% - 130px);
     top: calc(75% + 30px);
 }
@@ -91,8 +99,6 @@ button {
 }
 
 
-
-
 p {
     color: white;
     font-size: 50px;
@@ -113,7 +119,7 @@ td {
     color: #ffffff;
     font-size: 30px;
     font-family: sans-serif;
-    background-color: rgb(18, 18, 19);;
+    background-color: rgb(18, 18, 19);
 }
 
 
