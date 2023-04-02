@@ -1,14 +1,15 @@
-/* 
+/*
 *you can also change button to #start for just the start button
 *the button just applies to all buttons
 *but if you do a #then the id name it will apply to that element only
-*while you can do styling in html, make sure to do it all here 
+*while you can do styling in html, make sure to do it all here
 */
 body {
     background-color: black;
     margin: 0px;
     padding: 0px;
 }
+
 
 button {
     position: fixed;
@@ -22,12 +23,14 @@ button {
     text-align: center;
 }
 
+
 #start{
     visibility: visible;
     position: absolute;
     left: calc(50% - 130px);
     top: 46%;
 }
+
 
 #easy{
     visibility: hidden;
@@ -36,13 +39,15 @@ button {
     left: calc(50% - 130px);
 }
 
+
 #easy_txt {
     left: 75%;
     color: white;
     font-size: 40px;
     font-family: Cambria;
-    
+   
 }
+
 
 #continue {
     visibility: hidden;
@@ -50,27 +55,32 @@ button {
     top: calc(75% + 30px);
 }
 
+
 #normal{
     visibility: hidden;
     position: absolute;
-    top: calc(46% - 60px); 
+    top: calc(46% - 60px);
     left: calc(50% - 130px);
 }
+
 
 #random{
     visibility: hidden;
     position: absolute;
-    top:46%; 
+    top:46%;
     left: calc(50% - 130px);
 }
+
 
 #table{
     visibility: hidden;
 }
 
+
 #wordleTitle {
     text-align: center;
 }
+
 
 #gamemode {
     visibility: visible;
@@ -79,6 +89,7 @@ button {
     position: absolute;
 }
 
+
 p {
     color: white;
     font-size: 50px;
@@ -86,10 +97,11 @@ p {
     position: relative;
 }
 
+
 td {
     border: 2px;
     border-style: solid;
-    border-color: rgb(155, 155, 155);
+    border-color: rgb(45, 45, 47);
     width: 60px;
     height: 60px;
     text-align: center;
@@ -98,8 +110,9 @@ td {
     color: #ffffff;
     font-size: 30px;
     font-family: sans-serif;
-    background-color: black;
+    background-color: rgb(18, 18, 19);;
 }
+
 
 table{
     border-spacing: 10px;
@@ -107,3 +120,4 @@ table{
     margin-left: auto;
     margin-right: auto;
 }
+
