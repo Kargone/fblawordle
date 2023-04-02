@@ -37,7 +37,7 @@ let words = [[" "," "," "," "," "," "],[" "," "," "," "," "," "],[" "," "," "," 
 // sets what row for the typed letters to be put into
 let rCol = 7;
 // randomizing the word
-let seed= Math.floor(Math.random() * listOfAnswers.length);
+let seed = Math.floor(Math.random() * listOfAnswers.length);
 // changing the gamemode so only certai thinngs appear
 let gamemode = "nothing"
 // finding the answer
@@ -58,7 +58,7 @@ document.getElementById("gamemode").addEventListener('click', function (){
     document.getElementById("table").style.visibility = 'hidden';
     document.getElementById("easy").style.visibility = 'visible';
     gamemode = "nothing"
-    reset()
+    reset();
 });
 
 
@@ -68,7 +68,7 @@ document.getElementById("normal").addEventListener('click', function (){
     document.getElementById("table").style.visibility = 'visible';
     document.getElementById("easy").style.visibility = 'hidden';
     gamemode = "normal";
-    reset()
+    reset();
 });
 
 
@@ -78,15 +78,8 @@ document.getElementById("random").addEventListener('click', function (){
     document.getElementById("table").style.visibility = 'visible';
     document.getElementById("easy").style.visibility = 'hidden';
     answer = ""
-    for(var i = 1; i < 7; i++){
-        var random = Math.floor(Math.random() * 26);
-        answer += alphabet[random];
-        console.log(answer);
-    }
-
-
     gamemode = "random";
-    reset()
+    reset();
 });
 
 
@@ -96,13 +89,13 @@ document.getElementById("easy").addEventListener('click', function (){
     document.getElementById("table").style.visibility = 'visible';
     document.getElementById("easy").style.visibility = 'hidden';
     gamemode = "easy";
-    document.getElementById("easy_txt").style.visibility = 'visible';
+    document.getElementById("txt").style.visibility = 'visible';
     if(gamemode == "easy"){
         var sub = Math.floor(Math.random() * 6);
         var letter = answer.slice(sub, sub+1)
         var num = sub + 1
         //console.log(sub);
-        document.getElementById("easy_txt").innerHTML = ("Letter: " + num + " is " + letter.toUpperCase());
+        document.getElementById("txt").innerHTML = ("Letter: " + num + " is " + letter.toUpperCase());
     }
     reset()
 });
@@ -167,9 +160,9 @@ function checkingGame() {
     for (var i = 0; i < 6; i++) {
         id = (typingRow-1)*6+i+1;
         id = id + "";
-        //console.log(guess[i]);
-        //console.log(id)
-        //console.log(i)
+        console.log(guess[i]);
+        console.log(id)
+        console.log(i)
         if (answer.substring(i, i + 1) === guess[i]) {
             document.getElementById(id).style.backgroundColor = "#528d4d";
             document.getElementById(id).style.borderColor = "#528d4d";
@@ -186,16 +179,16 @@ function checkingGame() {
             }
         }
     }
-    endGame()
+    endGame();
 }
 
 
 function endGame(){
     if(sGuess == answer && typingRow < 8){
-        document.getElementById("easy_txt").innerHTML = "Congrats You Won";
+        document.getElementById("txt").innerHTML = "Congrats You Won";
         document.getElementById("continue").style.visibility = "visible";
     } else if(typingRow > 8 && sGuess != answer){
-        document.getElementById("easy_txt").innerHTML = "You ran out of guesses. \n Better luck next time!";
+        document.getElementById("txt").innerHTML = "You ran out of guesses. \n Better luck next time!";
         document.getElementById("continue").style.visibility = "visible";
     }
 }
@@ -209,8 +202,8 @@ function endGame(){
 
 function reset() {
     if(gamemode != "random"){
-        seed = Math.floor(Math.random() * listOfAnswers.length)
-        answer = listOfAnswers[seed]
+        seed = Math.floor(Math.random() * listOfAnswers.length);
+        answer = listOfAnswers[seed];
     }
    
     for(var i  = 1; i < 43; i++){
@@ -219,6 +212,14 @@ function reset() {
         document.getElementById(i+"").textContent = " ";
     }
 
+    if(gamemode = "random"){
+        answer = ""
+        for(var i = 1; i < 7; i++){
+            var random = Math.floor(Math.random() * 26);
+            answer += alphabet[random];
+            console.log(answer);
+        }
+    }
 
     col = 1;
     guess = [];
@@ -228,7 +229,7 @@ function reset() {
 
 
     if(gamemode != "easy"){
-        document.getElementById("easy_txt").style.visibility = "hidden";
+        document.getElementById("txt").style.visibility = "hidden";
     }
 }
 

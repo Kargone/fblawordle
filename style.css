@@ -40,7 +40,7 @@ button {
 }
 
 
-#easy_txt {
+#txt {
     left: 75%;
     color: white;
     font-size: 40px;
@@ -72,8 +72,9 @@ button {
 }
 
 
-#table{
+#wordle{
     visibility: hidden;
+    border-spacing: 10px;
 }
 
 
@@ -88,6 +89,8 @@ button {
     left: calc(100% - 314px);
     position: absolute;
 }
+
+
 
 
 p {
@@ -115,7 +118,6 @@ td {
 
 
 table{
-    border-spacing: 10px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
