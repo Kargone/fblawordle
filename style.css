@@ -29,6 +29,27 @@ button {
     top: 46%;
 }
 
+#easy{
+    visibility: hidden;
+    position: absolute;
+    top: calc(46% - 120px);
+    left: calc(50% - 130px);
+}
+
+#easy_txt {
+    left: 75%;
+    color: white;
+    font-size: 40px;
+    font-family: Cambria;
+    
+}
+
+#continue {
+    visibility: hidden;
+    left: calc(49% - 130px);
+    top: calc(75% + 30px);
+}
+
 #normal{
     visibility: hidden;
     position: absolute;
@@ -36,7 +57,7 @@ button {
     left: calc(50% - 130px);
 }
 
-#infinite{
+#random{
     visibility: hidden;
     position: absolute;
     top:46%; 
@@ -52,6 +73,7 @@ button {
 }
 
 #gamemode {
+    visibility: visible;
     top: calc(100% - 60px);
     left: calc(100% - 314px);
     position: absolute;

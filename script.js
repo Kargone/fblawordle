@@ -33,38 +33,79 @@ let sGuess = ''
 //the list of words to be displayed or the words that aren't displayed for infi mode are also included
 let words = [[" "," "," "," "," "," "],[" "," "," "," "," "," "],[" "," "," "," "," "," "],[" "," "," "," "," "," "],[" "," "," "," "," "," "],[" "," "," "," "," "," "],[" "," "," "," "," "," "]];
 // sets what row for the typed letters to be put into
-let rCol = 7
+let rCol = 7;
+// randomizing the word
+let seed= Math.floor(Math.random() * listOfAnswers.length);
+// changing the gamemode so only certai thinngs appear
+let gamemode = "nothing"
+// finding the answer
+let answer = listOfAnswers[seed]
 //this should be the longest part of the docu, maybe even a thousand lines long
 document.getElementById("start").addEventListener('click', function () {
     document.getElementById("start").style.visibility = 'hidden';
     document.getElementById("normal").style.visibility = 'visible';
-    document.getElementById("infinite").style.visibility = 'visible';
+    document.getElementById("random").style.visibility = 'visible';
+    document.getElementById("easy").style.visibility = 'visible'
     reset()
 });
 
 document.getElementById("gamemode").addEventListener('click', function (){
     document.getElementById("normal").style.visibility = 'visible';
-    document.getElementById("infinite").style.visibility = 'visible';
+    document.getElementById("random").style.visibility = 'visible';
     document.getElementById("table").style.visibility = 'hidden';
+    document.getElementById("easy").style.visibility = 'visible';
+    gamemode = "nothing"
     reset()
 });
 
 document.getElementById("normal").addEventListener('click', function (){
     document.getElementById("normal").style.visibility = 'hidden';
-    document.getElementById("infinite").style.visibility = 'hidden';
+    document.getElementById("random").style.visibility = 'hidden';
     document.getElementById("table").style.visibility = 'visible';
+    document.getElementById("easy").style.visibility = 'hidden';
+    gamemode = "normal";
     reset()
 });
 
-document.getElementById("infinite").addEventListener('click', function (){
+document.getElementById("random").addEventListener('click', function (){
     document.getElementById("normal").style.visibility = 'hidden';
-    document.getElementById("infinite").style.visibility = 'hidden';
+    document.getElementById("random").style.visibility = 'hidden';
     document.getElementById("table").style.visibility = 'visible';
+    document.getElementById("easy").style.visibility = 'hidden';
+    answer = ""
+    for(var i = 1; i < 7; i++){
+        var random = Math.floor(Math.random() * 26);
+        answer += alphabet[random];
+        console.log(answer);
+    }
+
+    gamemode = "random";
     reset()
 });
+
+document.getElementById("easy").addEventListener('click', function (){
+    document.getElementById("normal").style.visibility = 'hidden';
+    document.getElementById("random").style.visibility = 'hidden';
+    document.getElementById("table").style.visibility = 'visible';
+    document.getElementById("easy").style.visibility = 'hidden';
+    gamemode = "easy";
+    document.getElementById("easy_txt").style.visibility = 'visible';
+    if(gamemode == "easy"){
+        var sub = Math.floor(Math.random() * 6);
+        var letter = answer.slice(sub, sub+1)
+        var num = sub + 1
+        //console.log(sub);
+        document.getElementById("easy_txt").innerHTML = ("Letter: " + num + " is " + letter.toUpperCase());
+    }
+    reset()
+});
+
+document.getElementById("continue").addEventListener('click', function (){
+    reset()
+})
 
 document.addEventListener("keydown", function(e) {
-    console.log(e);
+    //console.log(e);
     game(e.key)
 });
 
@@ -72,12 +113,15 @@ function game(letter) {
     let pressedKey = String(letter);
     if(pressedKey == 'Enter' && rCol < 43){
         var testAnswer = listOfAnswers.includes(sGuess);
-        if(testAnswer == true){
+        //console.log(answer)
+        if(testAnswer == true  || gamemode == "random"){
             if(col == rCol){
+                checkingGame()
                 rCol += 6;
                 words[row] = guess;
                 guess = [];
                 sGuess = "";
+                typingRow++;
             }
         }
     
@@ -87,10 +131,10 @@ function game(letter) {
             document.getElementById(col).textContent = " ";
             if(col < 7){
                 sGuess = sGuess.slice(0, (col%6)-1);
-                console.log(sGuess);
+                //console.log(sGuess);
             }else{
                 sGuess = sGuess.slice(0, (col%6)-1);
-                console.log(sGuess);
+                //console.log(sGuess);
             }
         }
     }
@@ -98,29 +142,73 @@ function game(letter) {
     if(col < rCol && alphabet.includes(pressedKey) == true){
         document.getElementById(String(col)).textContent = pressedKey;
         col++;
-        guess[col-(2+(row*6))] = pressedKey;
+        guess.push(pressedKey)
         sGuess += pressedKey;
-        console.log(guess)
-        console.log(sGuess)
+        //console.log(guess)
+        //console.log(sGuess)
+    }
+}
+
+function checkingGame() {
+    let id = 0;
+    // Checking for Greens
+    for (var i = 0; i < 6; i++) {
+        id = (typingRow-1)*6+i+1;
+        id = id + "";
+        //console.log(guess[i]);
+        //console.log(id)
+        //console.log(i)
+        if (answer.substring(i, i + 1) === guess[i]) {
+            document.getElementById(id).style.backgroundColor = "#528d4d";
+            document.getElementById(id).style.borderColor = "#528d4d";
+        }
+    }
+    // Checking for Yellow
+    for (var j = 0; j < 5; j++) {
+        id = (typingRow-1)*6+j+1;
+        id = id + "";
+        for (var g = 0; g < 6; g++) {
+            if ((answer.substring(g, g + 1) === guess[j]) && (document.getElementById(id).style.backgroundColor != "rgb(82, 141, 77)")){
+                document.getElementById(id).style.backgroundColor = "#b59f3a";
+                document.getElementById(id).style.borderColor = "#b59f3a";
+            }
+        }
+    }
+    endGame()
+}
+
+function endGame(){
+    if(sGuess == answer && typingRow < 8){
+        document.getElementById("easy_txt").innerHTML = "Congrats You Won";
+        document.getElementById("continue").style.visibility = "visible";
+    } else if(typingRow > 8 && sGuess != answer){
+        document.getElementById("easy_txt").innerHTML = "You ran out of guesses. \n Better luck next time!";
+        document.getElementById("continue").style.visibility = "visible";
     }
 }
 
 
+
+
 function reset() {
+    if(gamemode != "random"){
+        seed = Math.floor(Math.random() * listOfAnswers.length)
+        answer = listOfAnswers[seed]
+    }
+    
     for(var i  = 1; i < 43; i++){
         document.getElementById(i+"").style.backgroundColor = "#121213";
         document.getElementById(i+"").style.borderColor = "#2d2d2f";
         document.getElementById(i+"").textContent = " ";
     }
-    document
+
     col = 1;
     guess = [];
     sGuess = "";
+    typingRow = 1;
+    rCol = 7;
+
+    if(gamemode != "easy"){
+        document.getElementById("easy_txt").style.visibility = "hidden";
+    }
 }
-
-
-
-//alright this is where it goes off the deepend, i suggest just trying to start from fresh with your own demos instead of using my code
-//only use my code when you know what it does, use stack overflow for any help you need
-
-//tbh connor this project isn't doable, it took me months to accomplish mordle and 70+ hours, idk if you can do it here
