@@ -55,7 +55,7 @@ document.getElementById("start").addEventListener('click', function () {
 document.getElementById("gamemode").addEventListener('click', function (){
     document.getElementById("normal").style.visibility = 'visible';
     document.getElementById("random").style.visibility = 'visible';
-    document.getElementById("table").style.visibility = 'hidden';
+    document.getElementById("wordle").style.visibility = 'hidden';
     document.getElementById("easy").style.visibility = 'visible';
     gamemode = "nothing"
     reset();
@@ -65,7 +65,7 @@ document.getElementById("gamemode").addEventListener('click', function (){
 document.getElementById("normal").addEventListener('click', function (){
     document.getElementById("normal").style.visibility = 'hidden';
     document.getElementById("random").style.visibility = 'hidden';
-    document.getElementById("table").style.visibility = 'visible';
+    document.getElementById("wordle").style.visibility = 'visible';
     document.getElementById("easy").style.visibility = 'hidden';
     gamemode = "normal";
     reset();
@@ -75,7 +75,7 @@ document.getElementById("normal").addEventListener('click', function (){
 document.getElementById("random").addEventListener('click', function (){
     document.getElementById("normal").style.visibility = 'hidden';
     document.getElementById("random").style.visibility = 'hidden';
-    document.getElementById("table").style.visibility = 'visible';
+    document.getElementById("wordle").style.visibility = 'visible';
     document.getElementById("easy").style.visibility = 'hidden';
     answer = ""
     gamemode = "random";
@@ -86,7 +86,7 @@ document.getElementById("random").addEventListener('click', function (){
 document.getElementById("easy").addEventListener('click', function (){
     document.getElementById("normal").style.visibility = 'hidden';
     document.getElementById("random").style.visibility = 'hidden';
-    document.getElementById("table").style.visibility = 'visible';
+    document.getElementById("wordle").style.visibility = 'visible';
     document.getElementById("easy").style.visibility = 'hidden';
     gamemode = "easy";
     document.getElementById("txt").style.visibility = 'visible';
@@ -119,7 +119,7 @@ function game(letter) {
         //console.log(answer)
         if(testAnswer == true  || gamemode == "random"){
             if(col == rCol){
-                checkingGame()
+                checkingGame();
                 rCol += 6;
                 words[row] = guess;
                 guess = [];
@@ -132,6 +132,7 @@ function game(letter) {
         if(pressedKey == 'Backspace' && col > 1){
             col--;
             document.getElementById(col).textContent = " ";
+            guess = guess.slice(0, (col%6)-1);
             if(col < 7){
                 sGuess = sGuess.slice(0, (col%6)-1);
                 //console.log(sGuess);
@@ -146,7 +147,7 @@ function game(letter) {
     if(col < rCol && alphabet.includes(pressedKey) == true){
         document.getElementById(String(col)).textContent = pressedKey;
         col++;
-        guess.push(pressedKey)
+        guess.push(pressedKey);
         sGuess += pressedKey;
         //console.log(guess)
         //console.log(sGuess)
@@ -157,6 +158,7 @@ function game(letter) {
 function checkingGame() {
     let id = 0;
     // Checking for Greens
+    console.log(guess);
     for (var i = 0; i < 6; i++) {
         id = (typingRow-1)*6+i+1;
         id = id + "";
@@ -212,7 +214,7 @@ function reset() {
         document.getElementById(i+"").textContent = " ";
     }
 
-    if(gamemode = "random"){
+    if(gamemode == "random"){
         answer = ""
         for(var i = 1; i < 7; i++){
             var random = Math.floor(Math.random() * 26);
