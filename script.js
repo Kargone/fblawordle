@@ -19,6 +19,8 @@ const listOfAnswers = ['abacus', 'abased', 'abated', 'abates', 'abayas', 'abbess
     'azalea', 'babble', 'babied', 'babies', 'baboon', 'backed', 'backer'];
 
 
+
+
 const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 
@@ -41,7 +43,7 @@ let seed = Math.floor(Math.random() * listOfAnswers.length);
 // changing the gamemode so only certai thinngs appear
 let gamemode = "nothing"
 // finding the answer
-let answer = listOfAnswers[seed]
+let answer = "astute"
 //this should be the longest part of the docu, maybe even a thousand lines long
 document.getElementById("start").addEventListener('click', function () {
     document.getElementById("start").style.visibility = 'hidden';
@@ -205,7 +207,7 @@ function endGame(){
 function reset() {
     if(gamemode != "random"){
         seed = Math.floor(Math.random() * listOfAnswers.length);
-        answer = listOfAnswers[seed];
+        answer = "astute"
     }
    
     for(var i  = 1; i < 43; i++){
