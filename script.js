@@ -56,6 +56,7 @@ document.getElementById("gamemode").addEventListener('click', function (){
     document.getElementById("random").style.visibility = 'visible';
     document.getElementById("wordle").style.visibility = 'hidden';
     document.getElementById("easy").style.visibility = 'visible';
+    document.getElementById("leaderboard").style.visibility = 'visible';
     gamemode = "nothing"
     reset();
 });
@@ -66,6 +67,7 @@ document.getElementById("normal").addEventListener('click', function (){
     document.getElementById("random").style.visibility = 'hidden';
     document.getElementById("wordle").style.visibility = 'visible';
     document.getElementById("easy").style.visibility = 'hidden';
+    document.getElementById("leaderboard").style.visibility = 'hidden';
     gamemode = "normal";
     reset();
 });
@@ -76,6 +78,7 @@ document.getElementById("random").addEventListener('click', function (){
     document.getElementById("random").style.visibility = 'hidden';
     document.getElementById("wordle").style.visibility = 'visible';
     document.getElementById("easy").style.visibility = 'hidden';
+    document.getElementById("leaderboard").style.visibility = 'hidden';
     answer = ""
     gamemode = "random";
     reset();
@@ -87,6 +90,7 @@ document.getElementById("easy").addEventListener('click', function (){
     document.getElementById("random").style.visibility = 'hidden';
     document.getElementById("wordle").style.visibility = 'visible';
     document.getElementById("easy").style.visibility = 'hidden';
+    document.getElementById("leaderboard").style.visibility = 'hidden';
     gamemode = "easy";
     document.getElementById("txt").style.visibility = 'visible';
     if(gamemode == "easy"){
@@ -186,10 +190,12 @@ function checkingGame() {
 
 function endGame(){
     if(sGuess == answer && typingRow < 8){
+        document.getElementById("txt").style.visibility = "visible";
         document.getElementById("txt").innerHTML = "Congrats You Won";
         document.getElementById("continue").style.visibility = "visible";
     } else if(typingRow > 8 && sGuess != answer){
         document.getElementById("txt").innerHTML = "You ran out of guesses. \n Better luck next time!";
+        document.getElementById("txt").style.visibility = "visible";
         document.getElementById("continue").style.visibility = "visible";
     }
 }
