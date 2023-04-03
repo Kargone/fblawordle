@@ -36,6 +36,9 @@ button {
     top: 10%;
     font-size: 10px;
     font-family: Cambria;
+    margin-top: auto;
+    color: white;
+    font-size: 30px;
 }
 
 
