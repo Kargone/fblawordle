@@ -40,7 +40,7 @@ let seed = Math.floor(Math.random() * listOfAnswers.length);
 // changing the gamemode so only certai thinngs appear
 let gamemode = "nothing"
 // finding the answer
-let answer = listOfAnswers[seed]
+let answer = "astute"
 //this should be the longest part of the docu, maybe even a thousand lines long
 document.getElementById("start").addEventListener('click', function () {
     document.getElementById("start").style.visibility = 'hidden';
@@ -210,7 +210,7 @@ function endGame(){
 function reset() {
     if(gamemode != "random"){
         seed = Math.floor(Math.random() * listOfAnswers.length);
-        answer = listOfAnswers[seed];
+        answer = "astute";
     }
    
     for(var i  = 1; i < 43; i++){
