@@ -56,6 +56,13 @@ button {
 }
 
 
+#link {
+    visibility: hidden;
+    left: calc(49% - 130px);
+    top: calc(75% + 90px);
+}
+
+
 #normal{
     visibility: hidden;
     position: absolute;
@@ -110,7 +117,7 @@ td {
     color: #ffffff;
     font-size: 30px;
     font-family: sans-serif;
-    background-color: rgb(18, 18, 19);;
+    background-color: rgb(18, 18, 19);
 }
 
 

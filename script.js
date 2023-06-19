@@ -51,17 +51,19 @@ document.getElementById("start").addEventListener('click', function () {
     reset()
 });
 
-
+// Change gamemode Button
 document.getElementById("gamemode").addEventListener('click', function (){
     document.getElementById("normal").style.visibility = 'visible';
     document.getElementById("random").style.visibility = 'visible';
+    document.getElementById("start").style.visibility = "hidden";
     document.getElementById("table").style.visibility = 'hidden';
     document.getElementById("easy").style.visibility = 'visible';
+    document.getElementById("easy_txt").style.visility = 'hidden';
     gamemode = "nothing"
     reset()
 });
 
-
+// Normal gamemode button
 document.getElementById("normal").addEventListener('click', function (){
     document.getElementById("normal").style.visibility = 'hidden';
     document.getElementById("random").style.visibility = 'hidden';
@@ -71,7 +73,7 @@ document.getElementById("normal").addEventListener('click', function (){
     reset()
 });
 
-
+// random gamemode button
 document.getElementById("random").addEventListener('click', function (){
     document.getElementById("normal").style.visibility = 'hidden';
     document.getElementById("random").style.visibility = 'hidden';
@@ -90,6 +92,8 @@ document.getElementById("random").addEventListener('click', function (){
 });
 
 
+
+// easy gamemode button
 document.getElementById("easy").addEventListener('click', function (){
     document.getElementById("normal").style.visibility = 'hidden';
     document.getElementById("random").style.visibility = 'hidden';
@@ -97,6 +101,7 @@ document.getElementById("easy").addEventListener('click', function (){
     document.getElementById("easy").style.visibility = 'hidden';
     gamemode = "easy";
     document.getElementById("easy_txt").style.visibility = 'visible';
+    reset()
     if(gamemode == "easy"){
         var sub = Math.floor(Math.random() * 6);
         var letter = answer.slice(sub, sub+1)
@@ -104,22 +109,31 @@ document.getElementById("easy").addEventListener('click', function (){
         //console.log(sub);
         document.getElementById("easy_txt").innerHTML = ("Letter: " + num + " is " + letter.toUpperCase());
     }
+});
+
+// play again button
+document.getElementById("continue").addEventListener('click', function (){
     reset()
 });
 
-
-document.getElementById("continue").addEventListener('click', function (){
-    reset()
-})
-
+// definition button
+document.getElementById("link").addEventListener('click', function (){
+    window.location.href = ("https://www.merriam-webster.com/dictionary/" + answer);
+});
 
 document.addEventListener("keydown", function(e) {
     //console.log(e);
     game(e.key)
+
+    if(e.key == "escape"){
+        reset();
+    }
 });
 
 
-function game(letter) {
+
+
+function game(letter) {   
     let pressedKey = String(letter);
     if(pressedKey == 'Enter' && rCol < 43){
         var testAnswer = listOfAnswers.includes(sGuess);
@@ -194,9 +208,11 @@ function endGame(){
     if(sGuess == answer && typingRow < 8){
         document.getElementById("easy_txt").innerHTML = "Congrats You Won";
         document.getElementById("continue").style.visibility = "visible";
+        document.getElementById("link").style.visibility = "visible";
     } else if(typingRow > 8 && sGuess != answer){
         document.getElementById("easy_txt").innerHTML = "You ran out of guesses. \n Better luck next time!";
         document.getElementById("continue").style.visibility = "visible";
+        document.getElementById("link").style.visibility = "visible";
     }
 }
 
@@ -208,6 +224,9 @@ function endGame(){
 
 
 function reset() {
+    document.getElementById("continue").style.visibility = "hidden";
+    document.getElementById("link").style.visibility = "hidden";
+
     if(gamemode != "random"){
         seed = Math.floor(Math.random() * listOfAnswers.length)
         answer = listOfAnswers[seed]
