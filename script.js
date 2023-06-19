@@ -18,7 +18,6 @@ const listOfAnswers = ['abacus', 'abased', 'abated', 'abates', 'abayas', 'abbess
     'avenge', 'avenue', 'averse', 'averts', 'avians', 'aviary', 'avidly', 'avoids',  'avowed', 'awaits', 'awaked', 'awaken', 'awakes', 'awards', 'awhile', 'awning', 'awoken', 'axeman', 'axilla', 'axioms', 'axions', 'axonal',
     'azalea', 'babble', 'babied', 'babies', 'baboon', 'backed', 'backer'];
 
-
 const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 
@@ -37,11 +36,11 @@ let words = [[" "," "," "," "," "," "],[" "," "," "," "," "," "],[" "," "," "," 
 // sets what row for the typed letters to be put into
 let rCol = 7;
 // randomizing the word
-let seed= Math.floor(Math.random() * listOfAnswers.length);
+let seed = Math.floor(Math.random() * listOfAnswers.length);
 // changing the gamemode so only certai thinngs appear
 let gamemode = "nothing"
 // finding the answer
-let answer = listOfAnswers[seed]
+let answer = listOfAnswers[seed];
 //this should be the longest part of the docu, maybe even a thousand lines long
 document.getElementById("start").addEventListener('click', function () {
     document.getElementById("start").style.visibility = 'hidden';
@@ -55,40 +54,33 @@ document.getElementById("start").addEventListener('click', function () {
 document.getElementById("gamemode").addEventListener('click', function (){
     document.getElementById("normal").style.visibility = 'visible';
     document.getElementById("random").style.visibility = 'visible';
-    document.getElementById("start").style.visibility = "hidden";
     document.getElementById("table").style.visibility = 'hidden';
     document.getElementById("easy").style.visibility = 'visible';
-    document.getElementById("easy_txt").style.visility = 'hidden';
     gamemode = "nothing"
-    reset()
+    reset();
 });
 
 // Normal gamemode button
 document.getElementById("normal").addEventListener('click', function (){
     document.getElementById("normal").style.visibility = 'hidden';
     document.getElementById("random").style.visibility = 'hidden';
-    document.getElementById("table").style.visibility = 'visible';
+    document.getElementById("wordle").style.visibility = 'visible';
     document.getElementById("easy").style.visibility = 'hidden';
+    document.getElementById("leaderboard").style.visibility = 'hidden';
     gamemode = "normal";
-    reset()
+    reset();
 });
 
 // random gamemode button
 document.getElementById("random").addEventListener('click', function (){
     document.getElementById("normal").style.visibility = 'hidden';
     document.getElementById("random").style.visibility = 'hidden';
-    document.getElementById("table").style.visibility = 'visible';
+    document.getElementById("wordle").style.visibility = 'visible';
     document.getElementById("easy").style.visibility = 'hidden';
+    document.getElementById("leaderboard").style.visibility = 'hidden';
     answer = ""
-    for(var i = 1; i < 7; i++){
-        var random = Math.floor(Math.random() * 26);
-        answer += alphabet[random];
-        console.log(answer);
-    }
-
-
     gamemode = "random";
-    reset()
+    reset();
 });
 
 
@@ -97,17 +89,17 @@ document.getElementById("random").addEventListener('click', function (){
 document.getElementById("easy").addEventListener('click', function (){
     document.getElementById("normal").style.visibility = 'hidden';
     document.getElementById("random").style.visibility = 'hidden';
-    document.getElementById("table").style.visibility = 'visible';
+    document.getElementById("wordle").style.visibility = 'visible';
     document.getElementById("easy").style.visibility = 'hidden';
+    document.getElementById("leaderboard").style.visibility = 'hidden';
     gamemode = "easy";
     document.getElementById("easy_txt").style.visibility = 'visible';
-    reset()
     if(gamemode == "easy"){
         var sub = Math.floor(Math.random() * 6);
         var letter = answer.slice(sub, sub+1)
         var num = sub + 1
         //console.log(sub);
-        document.getElementById("easy_txt").innerHTML = ("Letter: " + num + " is " + letter.toUpperCase());
+        document.getElementById("txt").innerHTML = ("Letter: " + num + " is " + letter.toUpperCase());
     }
 });
 
@@ -140,7 +132,7 @@ function game(letter) {
         //console.log(answer)
         if(testAnswer == true  || gamemode == "random"){
             if(col == rCol){
-                checkingGame()
+                checkingGame();
                 rCol += 6;
                 words[row] = guess;
                 guess = [];
@@ -153,6 +145,7 @@ function game(letter) {
         if(pressedKey == 'Backspace' && col > 1){
             col--;
             document.getElementById(col).textContent = " ";
+            guess = guess.slice(0, (col%6)-1);
             if(col < 7){
                 sGuess = sGuess.slice(0, (col%6)-1);
                 //console.log(sGuess);
@@ -167,7 +160,7 @@ function game(letter) {
     if(col < rCol && alphabet.includes(pressedKey) == true){
         document.getElementById(String(col)).textContent = pressedKey;
         col++;
-        guess.push(pressedKey)
+        guess.push(pressedKey);
         sGuess += pressedKey;
         //console.log(guess)
         //console.log(sGuess)
@@ -178,12 +171,13 @@ function game(letter) {
 function checkingGame() {
     let id = 0;
     // Checking for Greens
+    console.log(guess);
     for (var i = 0; i < 6; i++) {
         id = (typingRow-1)*6+i+1;
         id = id + "";
-        //console.log(guess[i]);
-        //console.log(id)
-        //console.log(i)
+        console.log(guess[i]);
+        console.log(id)
+        console.log(i)
         if (answer.substring(i, i + 1) === guess[i]) {
             document.getElementById(id).style.backgroundColor = "#528d4d";
             document.getElementById(id).style.borderColor = "#528d4d";
@@ -200,17 +194,19 @@ function checkingGame() {
             }
         }
     }
-    endGame()
+    endGame();
 }
 
 
 function endGame(){
     if(sGuess == answer && typingRow < 8){
-        document.getElementById("easy_txt").innerHTML = "Congrats You Won";
+        document.getElementById("txt").style.visibility = "visible";
+        document.getElementById("txt").innerHTML = "Congrats You Won!";
         document.getElementById("continue").style.visibility = "visible";
         document.getElementById("link").style.visibility = "visible";
     } else if(typingRow > 8 && sGuess != answer){
-        document.getElementById("easy_txt").innerHTML = "You ran out of guesses. \n Better luck next time!";
+        document.getElementById("txt").innerHTML = "You ran out of guesses. \n Better luck next time!";
+        document.getElementById("txt").style.visibility = "visible";
         document.getElementById("continue").style.visibility = "visible";
         document.getElementById("link").style.visibility = "visible";
     }
@@ -228,8 +224,8 @@ function reset() {
     document.getElementById("link").style.visibility = "hidden";
 
     if(gamemode != "random"){
-        seed = Math.floor(Math.random() * listOfAnswers.length)
-        answer = listOfAnswers[seed]
+        seed = Math.floor(Math.random() * listOfAnswers.length);
+        answer = listOfAnswers[seed];
     }
    
     for(var i  = 1; i < 43; i++){
@@ -238,6 +234,14 @@ function reset() {
         document.getElementById(i+"").textContent = " ";
     }
 
+    if(gamemode == "random"){
+        answer = ""
+        for(var i = 1; i < 7; i++){
+            var random = Math.floor(Math.random() * 26);
+            answer += alphabet[random];
+            console.log(answer);
+        }
+    }
 
     col = 1;
     guess = [];
@@ -247,7 +251,7 @@ function reset() {
 
 
     if(gamemode != "easy"){
-        document.getElementById("easy_txt").style.visibility = "hidden";
+        document.getElementById("txt").style.visibility = "hidden";
     }
 }
 
