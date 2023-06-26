@@ -295,7 +295,7 @@ document.addEventListener("keydown", function(e) {
 // Then moves to the next row
 function game(letter) {  
     let pressedKey = String(letter);
-    if(pressedKey == 'Enter' && rCol < 43){
+    if(pressedKey == 'Enter' && rCol < 44){
         var testAnswer = listOfAnswers.includes(sGuess);
         if(testAnswer == true  || gamemode == "random"){
             if(col == rCol){
