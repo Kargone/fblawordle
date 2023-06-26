@@ -143,11 +143,7 @@ const listOfAnswers = ['abacus', 'abased', 'abated', 'abates', 'abayas', 'abbess
 
 
 // used for the random gamemode
-const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-
-
-
-
+const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 //the left right position of the person's next letter
 let col = 1;
 // what row the is being typed on
@@ -201,13 +197,14 @@ document.getElementById("instructions").addEventListener('click', function (){
 
 // Change gamemode Button
 document.getElementById("chg_gamemode").addEventListener('click', function (){
-    document.getElementById("normal").style.visibility = 'visible';
-    document.getElementById("random").style.visibility = 'visible';
+    document.getElementById("normal").style.visibility = 'hidden';
+    document.getElementById("random").style.visibility = 'hidden';
     document.getElementById("start").style.visibility = "hidden";
     document.getElementById("table").style.visibility = 'hidden';
-    document.getElementById("easy").style.visibility = 'visible';
+    document.getElementById("easy").style.visibility = 'hidden';
     document.getElementById("easy_txt").style.visility = 'hidden';
     document.getElementById("instruction").style.visibility = 'hidden';
+    document.getElementById("start").style.visibility = 'visible';
     gamemode = "nothing"
     reset()
 });
@@ -384,7 +381,6 @@ function checkingGame() {
 
 // editing the game by displaying if you've won or lost
 function endGame(){
-    //document.getElementById("table").style.alignSelf = "center"
     if(greenList == answer && typingRow < 8){
         document.getElementById("easy_txt").innerHTML = "Congrats You Won";
         document.getElementById("easy_txt").style.visibility = "visible"
@@ -430,8 +426,12 @@ function reset() {
     typingRow = 1;
     rCol = 7;
 
-
-
+    if(gamemode == "easy"){
+        var sub = Math.floor(Math.random() * 6);
+        var letter = answer.slice(sub, sub+1)
+        var num = sub + 1
+        document.getElementById("easy_txt").innerHTML = ("Letter: " + num + " is " + letter.toUpperCase());
+    }
 
     if(gamemode != "easy"){
         document.getElementById("easy_txt").style.visibility = "hidden";
