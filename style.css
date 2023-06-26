@@ -5,7 +5,7 @@
 *while you can do styling in html, make sure to do it all here
 */
 body {
-    background-color: black;
+    background-color: rgb(18, 18, 19);
     margin: 0px;
     padding: 0px;
 }
@@ -16,8 +16,8 @@ body {
 button {
     position: fixed;
     color: white;
-    background-color: black;
-    border-color: white;
+    background-color: rgb(18, 18, 19);
+    border-color: rgb(45, 45, 47);
     border-radius: 20px;
     width: 312px;
     height: 50px;
@@ -99,6 +99,7 @@ button {
 
 #table{
     visibility: hidden;
+    
 }
 
 
@@ -112,7 +113,7 @@ button {
 
 
 #gamemode {
-    visibility: visible;
+    visibility: hidden;
     top: calc(100% - 60px);
     left: calc(100% - 314px);
     position: absolute;
@@ -130,7 +131,6 @@ p {
 
 
 
-
 td {
     border: 2px;
     border-style: solid;
@@ -144,6 +144,7 @@ td {
     font-size: 30px;
     font-family: sans-serif;
     background-color: rgb(18, 18, 19);
+    border-radius: 0px;
 }
 
 
