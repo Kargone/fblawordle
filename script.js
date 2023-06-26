@@ -173,23 +173,41 @@ let answer = listOfAnswers[seed];
 let answerList = [];
 let awrList2 = [];
 //this should be the longest part of the docu, maybe even a thousand lines long
-document.getElementById("start").addEventListener('click', function () {
+
+// Play button
+document.getElementById("start").addEventListener('click', function (){
     document.getElementById("start").style.visibility = 'hidden';
-    document.getElementById("normal").style.visibility = 'visible';
-    document.getElementById("random").style.visibility = 'visible';
-    document.getElementById("easy").style.visibility = 'visible'
+    document.getElementById("instructions").style.visibility = 'visible';
+    document.getElementById("gamemodes").style.visibility = 'visible';
     reset()
 });
 
+// gamemode selector button
+document.getElementById("gamemodes").addEventListener('click', function (){
+    document.getElementById("instructions").style.visibility = 'hidden';
+    document.getElementById("gamemodes").style.visibility = 'hidden';
+    document.getElementById("normal").style.visibility = 'visible';
+    document.getElementById("random").style.visibility = 'visible';
+    document.getElementById("easy").style.visibility = 'visible';
+});
+
+// instructions button
+document.getElementById("instructions").addEventListener('click', function (){
+    document.getElementById("instructions").style.visibility = 'hidden';
+    document.getElementById("instruction").style.visibility = 'visible';
+    document.getElementById("gamemodes").style.visibility = 'hidden';
+    document.getElementById("chg_gamemode").style.visibility = 'visible';
+});
 
 // Change gamemode Button
-document.getElementById("gamemode").addEventListener('click', function (){
+document.getElementById("chg_gamemode").addEventListener('click', function (){
     document.getElementById("normal").style.visibility = 'visible';
     document.getElementById("random").style.visibility = 'visible';
     document.getElementById("start").style.visibility = "hidden";
     document.getElementById("table").style.visibility = 'hidden';
     document.getElementById("easy").style.visibility = 'visible';
     document.getElementById("easy_txt").style.visility = 'hidden';
+    document.getElementById("instruction").style.visibility = 'hidden';
     gamemode = "nothing"
     reset()
 });
@@ -201,7 +219,7 @@ document.getElementById("normal").addEventListener('click', function (){
     document.getElementById("random").style.visibility = 'hidden';
     document.getElementById("table").style.visibility = 'visible';
     document.getElementById("easy").style.visibility = 'hidden';
-    document.getElementById("gamemode").style.visibility = 'visible';
+    document.getElementById("chg_gamemode").style.visibility = 'visible';
     gamemode = "normal";
     reset()
 });
@@ -213,7 +231,7 @@ document.getElementById("random").addEventListener('click', function (){
     document.getElementById("random").style.visibility = 'hidden';
     document.getElementById("table").style.visibility = 'visible';
     document.getElementById("easy").style.visibility = 'hidden';
-    document.getElementById("gamemode").style.visibility = 'visible';
+    document.getElementById("chg_gamemode").style.visibility = 'visible';
     answer = ""
     for(var i = 1; i < 7; i++){
         var random = Math.floor(Math.random() * 26);
@@ -236,7 +254,7 @@ document.getElementById("easy").addEventListener('click', function (){
     document.getElementById("random").style.visibility = 'hidden';
     document.getElementById("table").style.visibility = 'visible';
     document.getElementById("easy").style.visibility = 'hidden';
-    document.getElementById("gamemode").style.visibility = 'visible';
+    document.getElementById("chg_gamemode").style.visibility = 'visible';
     gamemode = "easy";
     document.getElementById("easy_txt").style.visibility = 'visible';
     reset()
