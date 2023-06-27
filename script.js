@@ -175,6 +175,7 @@ document.getElementById("start").addEventListener('click', function (){
     document.getElementById("start").style.visibility = 'hidden';
     document.getElementById("instructions").style.visibility = 'visible';
     document.getElementById("gamemodes").style.visibility = 'visible';
+    document.getElementById("leaderboard").style.visibility = 'visible';
     reset()
 });
 
@@ -193,6 +194,16 @@ document.getElementById("instructions").addEventListener('click', function (){
     document.getElementById("instruction").style.visibility = 'visible';
     document.getElementById("gamemodes").style.visibility = 'hidden';
     document.getElementById("chg_gamemode").style.visibility = 'visible';
+    document.getElementById("leaderboard").style.visibility = 'hidden';
+});
+
+// leaderboard button
+document.getElementById("leaderboard").addEventListener('click', function (){
+    document.getElementById("leaderboard").style.visibility = 'hidden';
+    document.getElementById("ldb").style.visibility = 'visible';
+    document.getElementById("gamemodes").style.visibility = 'hidden';
+    document.getElementById("chg_gamemode").style.visibility = 'visible';
+    document.getElementById("instructions").style.visibility = 'hidden';
 });
 
 // Change gamemode Button
@@ -208,6 +219,8 @@ document.getElementById("chg_gamemode").addEventListener('click', function (){
     document.getElementById("instructions").style.visibility = 'hidden';
     document.getElementById("gamemodes").style.visibility = 'hidden';
     document.getElementById("start").style.visibility = 'visible';
+    document.getElementById("leaderboard").style.visibility = 'hidden';
+    document.getElementById("ldb").style.visibility = 'hidden';
     gamemode = "nothing"
     reset()
 });

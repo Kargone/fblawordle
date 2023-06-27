@@ -12,7 +12,6 @@ body {
 
 
 
-
 button {
     position: fixed;
     color: white;
@@ -27,14 +26,12 @@ button {
 
 
 
-
 #start{
     visibility: visible;
     position: absolute;
     left: calc(50% - 130px);
     top: 46%;
 }
-
 
 
 
@@ -45,19 +42,33 @@ button {
     left: calc(50% - 130px);
 }
 
+
+
 #gamemodes{
     position: absolute;
     visibility: hidden;
-    top: calc(46% - 90px);
+    top: calc(46% - 120px);
     left: calc(50% - 130px);
 }
+
+
 
 #instructions{
     position: absolute;
     visibility: hidden;
-    top: calc(44%);
+    top: calc(46% - 60px);
     left: calc(50% - 130px);
 }
+
+
+
+#leaderboard{
+    position: absolute;
+    visibility: hidden;
+    top: calc(46%);
+    left: calc(50% - 130px);
+}
+
 
 
 #easy_txt {
@@ -69,6 +80,8 @@ button {
    
 }
 
+
+
 #continue {
     visibility: hidden;
     left: calc(49% - 130px);
@@ -77,13 +90,11 @@ button {
 
 
 
-
 #link {
     visibility: hidden;
     left: calc(49% - 130px);
     top: calc(75% + 90px);
 }
-
 
 
 
@@ -96,14 +107,12 @@ button {
 
 
 
-
 #random{
     visibility: hidden;
     position: absolute;
     top:46%;
     left: calc(50% - 130px);
 }
-
 
 
 
@@ -114,11 +123,9 @@ button {
 
 
 
-
 #wordleTitle {
     text-align: center;
 }
-
 
 
 
@@ -131,7 +138,6 @@ button {
 
 
 
-
 p {
     color: white;
     font-size: 50px;
@@ -139,12 +145,28 @@ p {
     position: relative;
 }
 
+
+
 dl{
     position: absolute;
     visibility: hidden;
     color: white;
-    font-size: 25px;
+}
+
+
+
+#instruction{
+    font-size: 30px;
     left: 20%
+}
+
+
+
+#ldb{
+    position: absolute;
+    color: white;
+    font-size: 50px;
+    left: 40%
 }
 
 
@@ -164,7 +186,6 @@ td {
     background-color: rgb(18, 18, 19);
     border-radius: 0px;
 }
-
 
 
 
