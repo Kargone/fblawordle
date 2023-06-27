@@ -204,6 +204,8 @@ document.getElementById("chg_gamemode").addEventListener('click', function (){
     document.getElementById("easy").style.visibility = 'hidden';
     document.getElementById("easy_txt").style.visility = 'hidden';
     document.getElementById("instruction").style.visibility = 'hidden';
+    document.getElementById("instructions").style.visibility = 'hidden';
+    document.getElementById("gamemodes").style.visibility = 'hidden';
     document.getElementById("start").style.visibility = 'visible';
     gamemode = "nothing"
     reset()
