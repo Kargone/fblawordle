@@ -274,7 +274,7 @@ document.getElementById("continue").addEventListener('click', function (){
 
 // definition button
 document.getElementById("link").addEventListener('click', function (){
-    window.location.href = ("https://www.merriam-webster.com/dictionary/" + answer);
+    window.open("https://www.merriam-webster.com/dictionary/" + answer, '_blank');
 });
 
 

@@ -46,19 +46,22 @@ button {
 }
 
 #gamemodes{
+    position: absolute;
     visibility: hidden;
     top: calc(46% - 90px);
-    left: 43.75%;
+    left: calc(50% - 130px);
 }
 
 #instructions{
+    position: absolute;
     visibility: hidden;
     top: calc(44%);
-    left: 43.75%;
+    left: calc(50% - 130px);
 }
 
 
 #easy_txt {
+    position: absolute;
     left: 75%;
     color: white;
     font-size: 40px;
@@ -136,12 +139,12 @@ p {
     position: relative;
 }
 
-ul{
+dl{
     position: absolute;
     visibility: hidden;
     color: white;
     font-size: 25px;
-    left: 40%
+    left: 20%
 }
 
 
