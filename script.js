@@ -197,6 +197,7 @@ document.getElementById("instructions").addEventListener('click', function (){
 
 // Change gamemode Button
 document.getElementById("chg_gamemode").addEventListener('click', function (){
+    document.getElementById("chg_gamemode").style.visibility = 'hidden'
     document.getElementById("normal").style.visibility = 'hidden';
     document.getElementById("random").style.visibility = 'hidden';
     document.getElementById("start").style.visibility = "hidden";
