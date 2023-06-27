@@ -233,6 +233,7 @@ document.getElementById("normal").addEventListener('click', function (){
     document.getElementById("table").style.visibility = 'visible';
     document.getElementById("easy").style.visibility = 'hidden';
     document.getElementById("chg_gamemode").style.visibility = 'visible';
+    document.getElementById("leaderboard").style.visibility = 'hidden';
     gamemode = "normal";
     reset()
 });
@@ -245,6 +246,7 @@ document.getElementById("random").addEventListener('click', function (){
     document.getElementById("table").style.visibility = 'visible';
     document.getElementById("easy").style.visibility = 'hidden';
     document.getElementById("chg_gamemode").style.visibility = 'visible';
+    document.getElementById("leaderboard").style.visibility = 'hidden';
     answer = ""
     for(var i = 1; i < 7; i++){
         var random = Math.floor(Math.random() * 26);
@@ -268,8 +270,9 @@ document.getElementById("easy").addEventListener('click', function (){
     document.getElementById("table").style.visibility = 'visible';
     document.getElementById("easy").style.visibility = 'hidden';
     document.getElementById("chg_gamemode").style.visibility = 'visible';
-    gamemode = "easy";
+    document.getElementById("leaderboard").style.visibility = 'hidden';
     document.getElementById("easy_txt").style.visibility = 'visible';
+    gamemode = "easy";
     reset()
     if(gamemode == "easy"){
         var sub = Math.floor(Math.random() * 6);
