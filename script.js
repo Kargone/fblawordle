@@ -385,6 +385,7 @@ function checkingGame() {
             if(awrList2[g] == document.getElementById(id).innerHTML && document.getElementById(id).style.background != "rgb(82, 141, 77)"){
                 document.getElementById(id).style.background = "rgb(181, 159, 58)";
                 document.getElementById(id).style.borderColor = "rgb(181, 159, 58)";
+                awrList2.splice(g, 1);
             };
         };
     };
