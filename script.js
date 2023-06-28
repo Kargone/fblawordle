@@ -248,6 +248,7 @@ document.getElementById("random").addEventListener('click', function (){
     document.getElementById("chg_gamemode").style.visibility = 'visible';
     document.getElementById("leaderboard").style.visibility = 'hidden';
     answer = ""
+    answerList = [];
     for(var i = 1; i < 7; i++){
         var random = Math.floor(Math.random() * 26);
         answer += alphabet[random];
@@ -354,6 +355,7 @@ function game(letter) {
 
 function checkingGame() {
     let id = 0;
+    awrList2 = [];
     // Checking to see what letters need to be turn green
     for(var i = 0 ; i < 6 ; i++){
         id = (typingRow-1)*6+i+1;
@@ -363,7 +365,6 @@ function checkingGame() {
             document.getElementById(id).style.background = "#528d4d";
             document.getElementById(id).style.borderColor = "#528d4d";
             greenList += answerList[i];
-            
         }else{
             awrList2.push(answerList[i]);
         };
@@ -381,7 +382,6 @@ function checkingGame() {
         id = (typingRow-1)*6+j+1;
         id += "";
         for(var g = 0; g < awrList2.length; g++){
-            console.log(awrList2[g] + "-" + document.getElementById(id).innerHTML)
             if(awrList2[g] == document.getElementById(id).innerHTML && document.getElementById(id).style.background != "rgb(82, 141, 77)"){
                 document.getElementById(id).style.background = "rgb(181, 159, 58)";
                 document.getElementById(id).style.borderColor = "rgb(181, 159, 58)";
@@ -401,16 +401,19 @@ function checkingGame() {
 
 // editing the game by displaying if you've won or lost
 function endGame(){
-    if(greenList == answer && typingRow < 8){
-        document.getElementById("easy_txt").innerHTML = "Congrats You Won";
-        document.getElementById("easy_txt").style.visibility = "visible"
-        document.getElementById("continue").style.visibility = "visible";
-        document.getElementById("link").style.visibility = "visible";
-    } else if(typingRow > 8 && sGuess != answer){
-       document.getElementById("easy_txt").innerHTML = "You ran out of guesses. \n Better luck next time!";
-        document.getElementById("continue").style.visibility = "visible";
-        document.getElementById("link").style.visibility = "visible";
-    };
+    if(typingRow == 8 || col == 43){
+        document.getElementById("easy_txt").innerHTML = 'You ran out of guesses. \n Better luck next time! \n The word was ' + answer;
+        document.getElementById("easy_txt").style.visibility = 'visible';
+        document.getElementById("continue").style.visibility = 'visible';
+        document.getElementById("link").style.visibility = 'visible';
+     };
+
+    if(greenList == answer && typingRow <= 7){
+        document.getElementById("easy_txt").innerHTML = 'Congrats You Won';
+        document.getElementById("easy_txt").style.visibility = 'visible';
+        document.getElementById("continue").style.visibility = 'visible';
+        document.getElementById("link").style.visibility = 'visible';
+    }
 };
 
 // Resettig everthing it can be played over and over
@@ -428,7 +431,6 @@ function reset() {
         for(var j = 1; j < 7; j++){
             answerList.push(answer.substring(j-1, j));
         };
-        //console.log(answerList)
     };
    
     for(var i  = 1; i < 43; i++){
@@ -441,7 +443,6 @@ function reset() {
 
 
     col = 1;
-    //guess = [];
     sGuess = "";
     typingRow = 1;
     rCol = 7;
@@ -452,6 +453,7 @@ function reset() {
         var num = sub + 1
         document.getElementById("easy_txt").innerHTML = ("Letter: " + num + " is " + letter.toUpperCase());
     }
+    
 
     if(gamemode != "easy"){
         document.getElementById("easy_txt").style.visibility = "hidden";
