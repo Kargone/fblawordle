@@ -327,7 +327,7 @@ function game(letter) {
         }
    
     }else{
-        if(pressedKey == 'Backspace' && col > 1){
+        if(pressedKey == 'Backspace' && col > (6*typingRow)-5){
             col--;
             document.getElementById(col).textContent = " ";
             if(col < 7){
