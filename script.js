@@ -425,7 +425,7 @@ function reset() {
     if(gamemode != "random"){
         // randomly selecting a new answer
         seed = Math.floor(Math.random() * listOfAnswers.length);
-        answer = listOfAnswers[seed];
+        answer = "biased";
         answerList = [];
         // Putting the answer into a list
         for(var j = 1; j < 7; j++){
