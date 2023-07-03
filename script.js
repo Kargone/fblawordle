@@ -126,7 +126,7 @@ const listOfAnswers = ['abacus', 'abased', 'abated', 'abates', 'abayas', 'abbess
 'stated', 'states', 'static', 'statue', 'status', 'stayed', 'steady', 'stereo', 'sticks', 'sticky', 'stitch', 'stocks', 'stolen', 'stones', 'stored', 'stores', 'storms', 'strain', 
 'straps', 'streak', 'stream', 'street', 'stress', 'strict', 'strike', 'string', 'strips', 'strive', 'stroke', 'strong', 'struck', 'studio', 'stupid', 'sturdy', 'styles', 'submit', 
 'subtle', 'subway', 'sucked', 'sudden', 'suffer', 'sugars', 'suited', 'suites', 'summer', 'summit', 'summon', 'sunset', 'superb', 'supply', 'surely', 'survey', 'switch', 'swords', 
-'symbol', 'syntax', 'system', 'tables', 'tablet', 'tackle', 'tactic', 'tagged', 'taking', 'talent', 'talked', 'taller', 'target', 'tasted', 'tastes', 'tattoo', 'taught', 'teamed', 
+'symbol', 'syntax', 'system', 'tables', 'tablet', 'tackle', 'tactic', 'tagged', 'taking', 'talent', 'tinsel', 'talked', 'taller', 'target', 'tasted', 'tastes', 'tattoo', 'taught', 'teamed', 
 'temple', 'tenant', 'tended', 'tender', 'tennis', 'tenure', 'terror', 'tested', 'thanks', 'theirs', 'themes', 'theory', 'thesis', 'thighs', 'things', 'thinks', 'thirty', 'though', 
 'thread', 'threat', 'thrill', 'thrive', 'throat', 'throne', 'thrown', 'throws', 'ticket', 'tigers', 'timber', 'timely', 'timing', 'tissue', 'titled', 'titles', 'toilet', 'tokens', 
 'tomato', 'tongue', 'tonnes', 'topics', 'topped', 'torque', 'tossed', 'toward', 'towels', 'towers', 'toxins', 'traced', 'tracks', 'traded', 'trader', 'trades', 'tragic', 'trails', 
