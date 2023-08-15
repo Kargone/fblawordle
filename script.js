@@ -124,13 +124,13 @@ const listOfAnswers = ['abacus', 'abased', 'abated', 'abates', 'abayas', 'abbess
 'sounds', 'source', 'soviet', 'spaces', 'speaks', 'speech', 'speeds', 'spells', 'spends', 'sphere', 'spices', 'spider', 'spikes', 'spinal', 'spirit', 'splash', 'spoken', 'sponge', 
 'sports', 'spouse', 'spread', 'spring', 'sprint', 'square', 'squash', 'stable', 'stacks', 'stages', 'stains', 'stairs', 'stakes', 'stamps', 'stance', 'stands', 'staple', 'starts',
 'stated', 'states', 'static', 'statue', 'status', 'stayed', 'steady', 'stereo', 'sticks', 'sticky', 'stitch', 'stocks', 'stolen', 'stones', 'stored', 'stores', 'storms', 'strain', 
-'straps', 'streak', 'stream', 'street', 'stress', 'strict', 'strike', 'string', 'strips', 'strive', 'stroke', 'strong', 'struck', 'studio', 'stupid', 'sturdy', 'styles', 'submit', 
+'strand', 'straps', 'streak', 'stream', 'street', 'stress', 'strict', 'strike', 'string', 'strips', 'strive', 'stroke', 'strong', 'struck', 'studio', 'stupid', 'sturdy', 'styles', 'submit', 
 'subtle', 'subway', 'sucked', 'sudden', 'suffer', 'sugars', 'suited', 'suites', 'summer', 'summit', 'summon', 'sunset', 'superb', 'supply', 'surely', 'survey', 'switch', 'swords', 
 'symbol', 'syntax', 'system', 'tables', 'tablet', 'tackle', 'tactic', 'tagged', 'taking', 'talent', 'tinsel', 'talked', 'taller', 'target', 'tasted', 'tastes', 'tattoo', 'taught', 'teamed', 
 'temple', 'tenant', 'tended', 'tender', 'tennis', 'tenure', 'terror', 'tested', 'thanks', 'theirs', 'themes', 'theory', 'thesis', 'thighs', 'things', 'thinks', 'thirty', 'though', 
-'thread', 'threat', 'thrill', 'thrive', 'throat', 'throne', 'thrown', 'throws', 'ticket', 'tigers', 'timber', 'timely', 'timing', 'tissue', 'titled', 'titles', 'toilet', 'tokens', 
+'thread', 'threat', 'thrill', 'thrive', 'throat', 'throne', 'thrown', 'throws', 'ticket', 'tigers', 'tights', 'timber', 'timely', 'timing', 'tissue', 'titled', 'titles', 'toilet', 'tokens', 
 'tomato', 'tongue', 'tonnes', 'topics', 'topped', 'torque', 'tossed', 'toward', 'towels', 'towers', 'toxins', 'traced', 'tracks', 'traded', 'trader', 'trades', 'tragic', 'trails', 
-'trains', 'traits', 'trauma', 'travel', 'treats', 'treaty', 'trends', 'trendy', 'trials', 'tribal', 'tribes', 'tricks', 'tricky', 'triple', 'troops', 'trophy', 'trucks', 'trusts', 
+'trains', 'traits', 'trauma', 'travel', 'treats', 'treaty', 'trends', 'trendy', 'triads', 'trials', 'tribal', 'tribes', 'tricks', 'tricky', 'triple', 'troops', 'trophy', 'trucks', 'trusts', 
 'truths', 'trying', 'tubing', 'tucked', 'tumors', 'tuning', 'tunnel', 'turkey', 'turned', 'turtle', 'tweets', 'twelve', 'twenty', 'typing', 'unable', 'uneven', 'unfair', 'unions', 
 'unique', 'united', 'unless', 'unlike', 'unlock', 'unpaid', 'unsafe', 'unsure', 'unused', 'update', 'upload', 'upside', 'upward', 'urgent', 'usable', 'useful', 'utmost', 'vacant', 
 'vacuum', 'valley', 'valued', 'values', 'valves', 'vanity', 'varied', 'varies', 'vastly', 'vector', 'velvet', 'vendor', 'venues', 'verbal', 'verify', 'verses', 'versus', 'vessel', 
@@ -399,7 +399,7 @@ function checkingGame() {
 
 
 
-// editing the game by displaying if you've won or lost
+// Editing the game by displaying if you've won or lost
 function endGame(){
     if(typingRow == 8 || col == 43){
         document.getElementById("easy_txt").innerHTML = 'You ran out of guesses. \n Better luck next time! \n The word was ' + answer;
