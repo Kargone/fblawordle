@@ -115,7 +115,7 @@ const listOfAnswers = ['abacus', 'abased', 'abated', 'abates', 'abayas', 'abbess
 'resist', 'resort', 'result', 'resume', 'retail', 'retain', 'retire', 'return', 'reveal', 'review', 'reward', 'rhythm', 'ribbon', 'richer', 'riders', 'riding', 'rifles', 'rights', 
 'ripped', 'rising', 'ritual', 'rivals', 'rivers', 'robots', 'robust', 'rocket', 'rolled', 'roller', 'romans', 'rookie', 'rooted', 'roster', 'rotary', 'rotate', 'rounds', 'router', 
 'routes', 'rubber', 'rugged', 'ruined', 'ruling', 'rumors', 'runner', 'runway', 'rushed', 'rustic', 'sacred', 'saddle', 'safari', 'safely', 'safest', 'safety', 'saints', 'salads', 
-'salary', 'salmon', 'sample', 'saving', 'saying', 'scales', 'scared', 'scenes', 'scenic', 'scheme', 'school', 'scored', 'scores', 'scouts', 'screen', 'screws', 'script', 'scroll', 
+'salary', 'salmon', 'sample', 'satire', 'saving', 'saying', 'scales', 'scared', 'scenes', 'scenic', 'scheme', 'school', 'scored', 'scores', 'scouts', 'screen', 'screws', 'script', 'scroll', 
 'sealed', 'search', 'season', 'seated', 'second', 'secret', 'sector', 'secure', 'seeing', 'seemed', 'seized', 'seldom', 'select', 'seller', 'senate', 'sender', 'senior', 'senses', 
 'sensor', 'sequel', 'serial', 'series', 'served', 'server', 'serves', 'settle', 'severe', 'sewing', 'sexual', 'shades', 'shadow', 'shaped', 'shapes', 'shared', 'shares', 'sharks', 
 'sheets', 'shells', 'shield', 'shifts', 'shines', 'shirts', 'shoots', 'shores', 'shorts', 'should', 'showed', 'shower', 'shrimp', 'shrink', 'sights', 'signal', 'signed', 'silent', 
@@ -356,7 +356,7 @@ function game(letter) {
 function checkingGame() {
     let id = 0;
     awrList2 = [];
-    // Checking to see what letters need to be turn green
+    // Checking to see what letters need to be turned green
     for(var i = 0 ; i < 6 ; i++){
         id = (typingRow-1)*6+i+1;
         id += "";
