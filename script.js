@@ -1,4 +1,5 @@
 // i had to stringify all of these good thing that was easy
+// Link to the webiste https://fblawordle.netlify.app
 const listOfAnswers = ['abacus', 'abased', 'abated', 'abates', 'abayas', 'abbess', 'abbeys', 'abbots', 'abduct', 'abhors', 'abided', 'abides', 'abject', 'abjure', 'ablate', 
 'ablaze', 'aboard', 'abodes', 'aborts', 'abound', 'abrade', 'abroad', 'abrupt', 'absent', 'absorb', 'absurd', 'abused', 'abuser', 'abuses', 'acacia', 'accede', 'accent', 'accept', 
 'access', 'accord', 'accost', 'accrue', 'accuse', 'acetic', 'acetyl', 'aching', 'acidic', 'acinar', 'acorns', 'across', 'acting', 'action', 'active', 'actors', 'actual', 'acuity', 
@@ -69,7 +70,7 @@ const listOfAnswers = ['abacus', 'abased', 'abated', 'abates', 'abayas', 'abbess
 'cities', 'citing', 'citrus', 'claims', 'classy', 'clause', 'clever', 'clicks', 'client', 'cliffs', 'clinic', 'closed', 'closer', 'closes', 'closet', 'clouds', 'clutch', 'coarse', 'coated', 
 'coding', 'coffee', 'cohort', 'colder', 'collar', 'colony', 'colors', 'colour', 'column', 'combat', 'comedy', 'comics', 'coming', 'commit', 'common', 'comply', 'convey', 'cooked', 
 'cooker', 'cookie', 'cooler', 'copied', 'copies', 'copper', 'corner', 'cosmic', 'costly', 'cotton', 'counts', 'county', 'couple', 'coupon', 'course', 'courts', 'cousin', 'covers', 
-'cracks', 'crafts', 'creams', 'creamy', 'create', 'credit', 'creepy', 'crimes', 'crisis', 'critic', 'crowds', 'cruise', 'crying', 'cursor', 'curved', 'curves', 'custom', 'cutter', 
+'cracks', 'crafts', 'cranes', 'crates', 'creams', 'creamy', 'create', 'credit', 'creepy', 'crimes', 'crisis', 'critic', 'crowds', 'cruise', 'crying', 'cursor', 'curved', 'curves', 'custom', 'cutter', 
 'cycles', 'damage', 'dancer', 'danger', 'danish', 'darker', 'dating', 'deadly', 'dealer', 'deaths', 'debate', 'debris', 'decade', 'decent', 'decide', 'deemed', 'deeper', 'deeply', 
 'defeat', 'defect', 'defend', 'define', 'degree', 'delays', 'delete', 'demand', 'demons', 'denial', 'denied', 'dental', 'depart', 'depend', 'deploy', 'depths', 'deputy', 'desert', 
 'design', 'desire', 'detail', 'detect', 'device', 'devils', 'dialog', 'diesel', 'differ', 'digits', 'dining', 'dinner', 'direct', 'dishes', 'divide', 'divine', 'diving', 'doctor', 
@@ -356,7 +357,7 @@ function game(letter) {
 function checkingGame() {
     let id = 0;
     awrList2 = [];
-    // Checking to see what letters need to be turned green
+    // Checking to see what letters need to be turned greenF
     for(var i = 0 ; i < 6 ; i++){
         id = (typingRow-1)*6+i+1;
         id += "";
@@ -399,7 +400,7 @@ function checkingGame() {
 
 
 
-// Editing the game by displaying if you've won or lost
+// Editing the game by displaying if you've either won or lost
 function endGame(){
     if(typingRow == 8 || col == 43){
         document.getElementById("easy_txt").innerHTML = 'You ran out of guesses. \n Better luck next time! \n The word was ' + answer;
