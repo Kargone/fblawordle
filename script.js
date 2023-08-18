@@ -143,7 +143,7 @@ const listOfAnswers = ['abacus', 'abased', 'abated', 'abates', 'abayas', 'abbess
 
 
 // Daily seed number
-let dlySd = 1
+let dlySd = 2
 // used for the random gamemode
 const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 //the left right position of the person's next letter
@@ -275,7 +275,7 @@ document.getElementById("easy").addEventListener('click', function (){
     document.getElementById("chg_gamemode").style.visibility = 'visible';
     document.getElementById("leaderboard").style.visibility = 'hidden';
     document.getElementById("easy_txt").style.visibility = 'visible';
-    document.getElementById("daily").style.visbility = 'hidden';
+    document.getElementById("daily").style.visibility = 'hidden';
     gamemode = "easy";
     reset()
     if(gamemode == "easy"){
