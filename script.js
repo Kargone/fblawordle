@@ -16,7 +16,7 @@ const listOfAnswers = ['abacus', 'abased', 'abated', 'abates', 'abayas', 'abbess
 'apathy', 'apexes', 'aphids', 'apiary', 'apical', 'apices', 'apiece', 'aplomb', 'apneas', 'apneic', 'apnoea', 'apogee', 'appall', 'appeal', 'appear', 'append', 'apples', 'applet', 
 'aprons', 'arabic', 'arable', 'arbors', 'arbour', 'arcade', 'arcana', 'arcane', 'arched', 'archer', 'arches', 'archly', 'arctic', 'ardent', 'ardour', 'arenas', 'areola', 'argent', 
 'argued', 'arguer', 'argues', 'argyle', 'aright', 'arisen', 'arises', 'armada', 'armful', 'armies', 'arming', 'armlet', 'armory', 'armour', 'armpit', 'arnica', 'aromas', 'around', 
-'arouse', 'arrant', 'arrays', 'arrear', 'arrest', 'arrive', 'arrows', 'arroyo', 'arsons', 'artery', 'artful', 'artist', 'ascend', 'ascent', 'ashore', 'ashram', 'asides', 'asking', 
+'arouse', 'arrant', 'arrays', 'arrear', 'arrest', 'arrive', 'arrows', 'arroyo', 'arsons', 'artery', 'artful', 'artist', 'ascend', 'ascent', 'ashore', 'ashram', 'asides', 'asigns', 'asking', 
 'asleep', 'aspect', 'aspens', 'aspire', 'assail', 'assays', 'assent', 'assert', 'assess', 'assets', 'assign', 'assist', 'assize', 'assume', 'assure', 'astern', 'asters', 'asthma', 
 'astral', 'astray', 'astute', 'asylum', 'ataxia', 'atlatl', 'atolls', 'atomic', 'atonal', 'atopic', 'atrial', 'atrium', 'attach', 'attack', 'attain', 'attend', 'attest', 'attics', 
 'attire', 'attune', 'auburn', 'audios', 'audits', 'augers', 'augurs', 'augury', 'august', 'auntie', 'aureus', 'aurora', 'auteur', 'author', 'autism', 'autumn', 'auxins', 'avails', 
@@ -142,7 +142,8 @@ const listOfAnswers = ['abacus', 'abased', 'abated', 'abates', 'abayas', 'abbess
 'zoning'];
 
 
-
+// Daily seed number
+let dlySd = 1
 // used for the random gamemode
 const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 //the left right position of the person's next letter
@@ -187,6 +188,7 @@ document.getElementById("gamemodes").addEventListener('click', function (){
     document.getElementById("normal").style.visibility = 'visible';
     document.getElementById("random").style.visibility = 'visible';
     document.getElementById("easy").style.visibility = 'visible';
+    document.getElementById("daily").style.visibility = 'visible';
 });
 
 // instructions button
@@ -222,6 +224,7 @@ document.getElementById("chg_gamemode").addEventListener('click', function (){
     document.getElementById("start").style.visibility = 'visible';
     document.getElementById("leaderboard").style.visibility = 'hidden';
     document.getElementById("ldb").style.visibility = 'hidden';
+    document.getElementById("daily").style.visibility = 'hidden';
     gamemode = "nothing"
     reset()
 });
@@ -235,6 +238,7 @@ document.getElementById("normal").addEventListener('click', function (){
     document.getElementById("easy").style.visibility = 'hidden';
     document.getElementById("chg_gamemode").style.visibility = 'visible';
     document.getElementById("leaderboard").style.visibility = 'hidden';
+    document.getElementById("daily").style.visibility = 'hidden';
     gamemode = "normal";
     reset()
 });
@@ -248,6 +252,7 @@ document.getElementById("random").addEventListener('click', function (){
     document.getElementById("easy").style.visibility = 'hidden';
     document.getElementById("chg_gamemode").style.visibility = 'visible';
     document.getElementById("leaderboard").style.visibility = 'hidden';
+    document.getElementById("daily").style.visibility = 'hidden';
     answer = ""
     answerList = [];
     for(var i = 1; i < 7; i++){
@@ -261,10 +266,6 @@ document.getElementById("random").addEventListener('click', function (){
 });
 
 
-
-
-
-
 // easy gamemode button
 document.getElementById("easy").addEventListener('click', function (){
     document.getElementById("normal").style.visibility = 'hidden';
@@ -274,14 +275,29 @@ document.getElementById("easy").addEventListener('click', function (){
     document.getElementById("chg_gamemode").style.visibility = 'visible';
     document.getElementById("leaderboard").style.visibility = 'hidden';
     document.getElementById("easy_txt").style.visibility = 'visible';
+    document.getElementById("daily").style.visbility = 'hidden';
     gamemode = "easy";
     reset()
     if(gamemode == "easy"){
         var sub = Math.floor(Math.random() * 6);
-        var letter = answer.slice(sub, sub+1)
-        var num = sub + 1
+        var letter = answer.slice(sub, sub+1);
+        var num = sub + 1;
         document.getElementById("easy_txt").innerHTML = ("Letter: " + num + " is " + letter.toUpperCase());
     }
+});
+
+
+document.getElementById("daily").addEventListener('click', function (){
+    document.getElementById("normal").style.visibility = 'hidden';
+    document.getElementById("random").style.visibility = 'hidden';
+    document.getElementById("table").style.visibility = 'visible';
+    document.getElementById("easy").style.visibility = 'hidden';
+    document.getElementById("daily").style.visibility = 'hidden';
+    document.getElementById("chg_gamemode").style.visibility = 'visible';
+    document.getElementById("leaderboard").style.visibility = 'hidden';
+    gamemode = "daily";
+
+    reset()
 });
 
 
@@ -428,10 +444,6 @@ function reset() {
         seed = Math.floor(Math.random() * listOfAnswers.length);
         answer = listOfAnswers[seed];
         answerList = [];
-        // Putting the answer into a list
-        for(var j = 1; j < 7; j++){
-            answerList.push(answer.substring(j-1, j));
-        };
     };
    
     for(var i  = 1; i < 43; i++){
@@ -439,8 +451,6 @@ function reset() {
         document.getElementById(i+"").style.borderColor = "#2d2d2f";
         document.getElementById(i+"").textContent = " ";
     };
-
-
 
 
     col = 1;
@@ -454,10 +464,21 @@ function reset() {
         var num = sub + 1
         document.getElementById("easy_txt").innerHTML = ("Letter: " + num + " is " + letter.toUpperCase());
     }
+
+
+    if(gamemode == "daily"){
+        answer = listOfAnswers[dlySd];
+        answerList = [];
+    }
     
 
     if(gamemode != "easy"){
         document.getElementById("easy_txt").style.visibility = "hidden";
     }
+
+    // Putting the answer into a list
+    for(var j = 1; j < 7; j++){
+        answerList.push(answer.substring(j-1, j));
+    };
 }
 
