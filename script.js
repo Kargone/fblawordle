@@ -255,11 +255,6 @@ document.getElementById("random").addEventListener('click', function (){
     document.getElementById("daily").style.visibility = 'hidden';
     answer = ""
     answerList = [];
-    for(var i = 1; i < 7; i++){
-        var random = Math.floor(Math.random() * 26);
-        answer += alphabet[random];
-        console.log(answer);
-    }
 
     gamemode = "random";
     reset()
@@ -424,11 +419,14 @@ function endGame(){
         document.getElementById("easy_txt").innerHTML = 'Congrats You Won';
         document.getElementById("easy_txt").style.visibility = 'visible';
         document.getElementById("continue").style.visibility = 'visible';
-        document.getElementById("link").style.visibility = 'visible';
+
+        if(gamemode != "random"){
+            document.getElementById("link").style.visibility = 'visible';
+        };
     }
 };
 
-// Resettig everthing it can be played over and over
+// Reseting everything it can be played over and over
 function reset() {
     document.getElementById("continue").style.visibility = "hidden";
     document.getElementById("link").style.visibility = "hidden";
@@ -440,6 +438,16 @@ function reset() {
         answer = listOfAnswers[seed];
         answerList = [];
     };
+
+    if(gamemode == "random"){
+        answer = '';
+        answerList = [];
+        for(var i = 1; i < 7; i++){
+            var random = Math.floor(Math.random() * 26);
+            answer += alphabet[random];
+            console.log(answer);
+        }
+    }
    
     for(var i  = 1; i < 43; i++){
         document.getElementById(i+"").style.backgroundColor = "#121213";
