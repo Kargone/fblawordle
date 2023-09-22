@@ -445,7 +445,6 @@ function reset() {
         for(var i = 1; i < 7; i++){
             var random = Math.floor(Math.random() * 26);
             answer += alphabet[random];
-            console.log(answer);
         }
     }
    
