@@ -157,8 +157,6 @@ let guess = [];
 let guess1 = [];
 // same thing as guess just not the list
 let greenList = "";
-//the list of words to be displayed or the words that aren't displayed for infi mode are also included
-let words = [[" "," "," "," "," "," "],[" "," "," "," "," "," "],[" "," "," "," "," "," "],[" "," "," "," "," "," "],[" "," "," "," "," "," "],[" "," "," "," "," "," "],[" "," "," "," "," "," "]];
 // sets what row for the typed letters to be put into
 let rCol = 7;
 // randomizing the word
@@ -167,7 +165,7 @@ let seed= Math.floor(Math.random() * listOfAnswers.length);
 let gamemode = "nothing";
 // finding the answer
 let answer = listOfAnswers[seed];
-// list to maei it easier to detect greens and yellows
+// list to make it easier to detect greens and yellows
 let answerList = [];
 let awrList2 = [];
 //this should be the longest part of the docu, maybe even a thousand lines long
@@ -328,7 +326,6 @@ function game(letter) {
             if(col == rCol){
                 checkingGame()
                 rCol += 6;
-                words[row] = guess;
                 sGuess = "";
                 typingRow++;
             }
